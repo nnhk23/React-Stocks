@@ -1,16 +1,16 @@
 import React from 'react';
 
-const SearchBar = ({sortStocks, stocksByType}) => {
+const SearchBar = ({sortStocks, stocksByType, order}) => {
   return (
     <div>
 
       <strong>Sort by:</strong>
       <label>
-        <input type="radio" name='sort' value="Alphabetically" checked={null} onChange={sortStocks}/>
+        <input type="radio" value="Alphabetically" checked={order === 'Alphabetically'} onChange={sortStocks}/>
         Alphabetically
       </label>
       <label>
-        <input type="radio" name='sort' value="Price" checked={null} onChange={sortStocks}/>
+        <input type="radio" value="Price" checked={order === 'Price'} onChange={sortStocks}/>
         Price
       </label>
       <br/>
@@ -18,6 +18,7 @@ const SearchBar = ({sortStocks, stocksByType}) => {
       <label>
         <strong>Filter:</strong>
         <select onChange={stocksByType}>
+          <option value="All">All</option>
           <option value="Tech">Tech</option>
           <option value="Sportswear">Sportswear</option>
           <option value="Finance">Finance</option>

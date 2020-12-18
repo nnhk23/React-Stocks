@@ -8,7 +8,8 @@ class MainContainer extends Component {
   state={
     stocks: [],
     ownedStocks: [],
-    type: "Tech"
+    type: "All",
+    order: ""
   }
 
   componentDidMount() {
@@ -33,7 +34,8 @@ class MainContainer extends Component {
     newStocks = this.state.stocks.sort((a,b) => a.price - b.price)
 
     this.setState({
-      stocks: newStocks
+      stocks: newStocks,
+      order: e.target.value
     })
   }
 
@@ -56,7 +58,11 @@ class MainContainer extends Component {
   render() {
     return (
       <div>
-        <SearchBar sortStocks={this.sortStocks} stocksByType={this.stocksByType}/>
+        <SearchBar 
+          sortStocks={this.sortStocks} 
+          stocksByType={this.stocksByType}
+          order={this.state.order}
+        />
 
           <div className="row">
             <div className="col-8">
